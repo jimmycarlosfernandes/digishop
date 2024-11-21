@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Digi Shop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Cadastro - Digi Shop</h1>
+        <nav>
+            <a href="index.html">Produtos</a>
+            <a href="cart.html">Carrinho</a>
+        </nav>
+    </header>
+    <main>
+        <section id="signup">
+            <h2>Crie sua conta</h2>
+            <form id="signup-form">
+                <label for="username">Nome de usuário:</label>
+                <input type="text" id="username" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+
+                <label for="password">Senha:</label>
+                <input type="password" id="password" required>
+
+                <button type="submit">Cadastrar</button>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        const form = document.getElementById("signup-form");
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            alert("Cadastro realizado com sucesso!");
+            const completeMore = confirm(
+                "Deseja completar o restante do cadastro com mais informações?"
+            );
+
+            if (completeMore) {
+                window.location.href = "extra-info.html";
+            } else {
+                window.location.href = "index.html";
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informações Adicionais - Digi Shop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Informações Adicionais</h1>
+        <nav>
+            <a href="index.html">Produtos</a>
+            <a href="cart.html">Carrinho</a>
+            <a href="signup.html" id="account-link"></a>
+        </nav>
+    </header>
+    <main>
+        <section id="extra-info">
+            <form id="extra-info-form">
+                <label for="full-name">Nome Completo:</label>
+                <input type="text" id="full-name" required>
+
+                <label for="cep">CEP:</label>
+                <input type="text" id="cep" required>
+
+                <label for="street">Rua:</label>
+                <input type="text" id="street" required>
+
+                <label for="neighborhood">Bairro:</label>
+                <input type="text" id="neighborhood" required>
+
+                <label for="number">Número:</label>
+                <input type="text" id="number" required>
+
+                <label for="phone">Número de Celular:</label>
+                <input type="text" id="phone" required>
+
+                <button type="submit">Salvar</button>
+            </form>
+        </section>
+    </main>
+    <script>
+        document.getElementById("extra-info-form").addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const userData = {
+                fullName: document.getElementById("full-name").value,
+                cep: document.getElementById("cep").value,
+                street: document.getElementById("street").value,
+                neighborhood: document.getElementById("neighborhood").value,
+                number: document.getElementById("number").value,
+                phone: document.getElementById("phone").value,
+            };
+
+            localStorage.setItem("userDetails", JSON.stringify(userData));
+            alert("Informações salvas com sucesso!");
+            window.location.href = "index.html";
+        });
+    </script>
+</body>
+</html>

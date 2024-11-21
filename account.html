@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Conta - Digi Shop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Minha Conta</h1>
+        <nav>
+            <a href="index.html">Produtos</a>
+            <a href="cart.html">Carrinho</a>
+            <a href="signup.html" id="account-link"></a>
+        </nav>
+    </header>
+    <main>
+        <section id="user-info">
+            <h2>Informações do Usuário</h2>
+            <ul id="user-details">
+                <!-- Informações serão exibidas dinamicamente -->
+            </ul>
+            <button onclick="logout()">Sair</button>
+        </section>
+    </main>
+    <script>
+        // Exibir informações do usuário
+        document.addEventListener("DOMContentLoaded", () => {
+            const accountLink = document.getElementById("account-link");
+            const userDetails = JSON.parse(localStorage.getItem("userDetails"));
+
+            if (userDetails) {
+                accountLink.textContent = "Minha Conta";
+                accountLink.href = "account.html";
+
+                const userDetailsList = document.getElementById("user-details");
+                userDetailsList.innerHTML = `
+                    <li><strong>Nome:</strong> ${userDetails.fullName}</li>
+                    <li><strong>CEP:</strong> ${userDetails.cep}</li>
+                    <li><strong>Rua:</strong> ${userDetails.street}</li>
+                    <li><strong>Bairro:</strong> ${userDetails.neighborhood}</li>
+                    <li><strong>Número:</strong> ${userDetails.number}</li>
+                    <li><strong>Celular:</strong> ${userDetails.phone}</li>
+                `;
+            } else {
+                alert("Usuário não encontrado. Redirecionando para cadastro.");
+                window.location.href = "signup.html";
+            }
+        });
+
+        // Função de logout
+        function logout() {
+            if (confirm("Tem certeza que deseja sair?")) {
+                localStorage.removeItem("userDetails");
+                alert("Você saiu da conta.");
+                window.location.href = "index.html";
+            }
+        }
+    </script>
+</body>
+</html>

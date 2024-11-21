@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digi Shop - Catálogo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Digi Shop</h1>
+        <nav>
+            <a href="cart.html">Carrinho</a>
+            <a href="signup.html" id="account-link"></a>
+        </nav>
+    </header>
+    <main>
+        <section id="search">
+            <input type="text" id="search-bar" placeholder="Pesquise por produtos...">
+            <button onclick="searchProducts()">Pesquisar</button>
+        </section>
+        <section id="product-list">
+            <h2>Catálogo de Produtos</h2>
+            <ul id="products">
+                <!-- Produtos serão carregados dinamicamente -->
+            </ul>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
