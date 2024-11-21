@@ -14,7 +14,7 @@
             <a href="signup.html" id="account-link"></a>
         </nav>
     </header>
-    <main>
+    <<main>
         <section id="cart-items">
             <h2>Produtos no Carrinho</h2>
             <ul id="cart">
@@ -22,8 +22,20 @@
             </ul>
             <h3 id="total">Total: R$0,00</h3>
         </section>
-        <button onclick="finalizePurchase()">Finalizar Compra</button>
+        <button onclick="openPaymentModal()">Escolher Forma de Pagamento</button>
     </main>
+    
+    <!-- Modal de Pagamento -->
+    <div id="payment-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closePaymentModal()">&times;</span>
+            <h2>Escolha a Forma de Pagamento</h2>
+            <button onclick="payWithPix()">Pix</button>
+            <button onclick="payWithBoleto()">Boleto</button>
+            <button onclick="payWithCard()">Cartão</button>
+        </div>
+    </div>
+    
     <script src="script.js"></script>
 </body>
 </html>

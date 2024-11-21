@@ -110,3 +110,55 @@ document.addEventListener("DOMContentLoaded", () => {
         showCart();
     }
 });
+
+// Função para abrir modal de pagamento
+function openPaymentModal() {
+    const modal = document.getElementById("payment-modal");
+    modal.style.display = "block";
+}
+
+// Fechar modal
+function closePaymentModal() {
+    const modal = document.getElementById("payment-modal");
+    modal.style.display = "none";
+}
+
+// Pix: Gerar QR Code
+function payWithPix() {
+    closePaymentModal();
+    const qrCode = "QR_CODE_AQUI"; // Substitua por uma lógica de geração real
+    alert("QR Code Gerado:\n" + qrCode);
+}
+
+// Boleto: Gerar Código de Barras
+function payWithBoleto() {
+    closePaymentModal();
+    const boletoCode = "1234.5678.9012.3456.7890.1234.5678"; // Gerar dinamicamente
+    alert("Código de Boleto Gerado:\n" + boletoCode);
+}
+
+// Cartão: Cadastro de Cartão
+function payWithCard() {
+    closePaymentModal();
+    const cardNumber = prompt("Digite o número do cartão:");
+    const cardHolder = prompt("Digite o nome do titular:");
+    const expirationDate = prompt("Digite a validade (MM/AA):");
+    const cardData = { cardNumber, cardHolder, expirationDate };
+
+    localStorage.setItem("cardDetails", JSON.stringify(cardData));
+    alert("Cartão cadastrado com sucesso!");
+}
+
+// Exibir Cartão na Página "Minha Conta"
+function loadAccountPage() {
+    const cardDetails = JSON.parse(localStorage.getItem("cardDetails"));
+    if (cardDetails) {
+        document.getElementById("card-details").innerHTML = `
+            <li><strong>Número:</strong> **** **** **** ${cardDetails.cardNumber.slice(-4)}</li>
+            <li><strong>Titular:</strong> ${cardDetails.cardHolder}</li>
+            <li><strong>Validade:</strong> ${cardDetails.expirationDate}</li>
+        `;
+    } else {
+        document.getElementById("card-details").innerHTML = `<li>Nenhum cartão cadastrado.</li>`;
+    }
+}
